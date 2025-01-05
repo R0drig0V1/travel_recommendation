@@ -26,7 +26,18 @@ function recommendation(event) {
               articlesDiv.appendChild(build_article(item));
             }
           });
-        }              
+        }
+
+        if (category == "countries"){
+
+          items.forEach(item => {
+            if (item.name.toLowerCase().includes(keywords.toLowerCase())){
+              (item.cities).forEach(city => {
+              articlesDiv.appendChild(build_article(city));
+              });
+            }
+          });
+        }
       }
     })
     .catch(error => {
@@ -64,16 +75,3 @@ function clean() {
 
 document.getElementById('search_button').addEventListener('click', recommendation);
 document.getElementById('delete_button').addEventListener('click', clean);
-
-
-
-
-//In this task, you will write JavaScript to accept these keywords and variations the user will enter in the search field in your navigation bar on the home page.
-
-//    For example, if the user enters "beach," or "beaches," "Beach" or "BEACH," then you need to write JavaScript code so that it accepts all variations of this keyword.
-
-//    For uppercase letters in the keyword, you can convert them to lowercase in your JavaScript using the string manipulation toLowerCase() method.
-
-//    Similarly, you need to create logic to match keywords entered for temples and countries.
-
-//    The website should display results only after the user clicks the Search button.
